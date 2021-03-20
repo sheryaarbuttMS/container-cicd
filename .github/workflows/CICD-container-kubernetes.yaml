@@ -30,7 +30,7 @@ jobs:
         with:
           context: 4_container_ci-cd-kubernetes
           push: true
-          tags: nfacr.azurecr.io/python-webapp/demo:${{ github.run_number }}
+          tags: nfacr.azurecr.io/python-webapp/cd-demo:${{ github.run_number }}
   CD:
     needs: CI
     runs-on: ubuntu-latest
