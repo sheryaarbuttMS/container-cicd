@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment-pipeline
+  namespace: python-flux
+  labels:
+    app: python-demo-cd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-demo-cd
+  template:
+    metadata:
+      labels:
+        app: python-demo-cd
+    spec:
+      containers:
+      - name: python-demo-cd
+        image: nfcicd.azurecr.io/python-webapp/cd-demo:1
+        ports:
+        - containerPort: 8001
