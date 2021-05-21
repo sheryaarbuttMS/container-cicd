@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
     paths: 
-    - 4_container_ci-cd-kubernetes/**
-    - .github/workflows/CICD-container-kubernetes.yaml
+    - 2_container_ci-cd-kubernetes/**
+    - .github/workflows/2_CICD-push-container-kubernetes.yaml
 
   workflow_dispatch:
   
@@ -23,14 +23,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: ACR login
-        run: az acr login -n nfacr
+        run: az acr login -n nfcicd
          
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
-          context: 4_container_ci-cd-kubernetes
+          context: 2_container_ci-cd-kubernetes
           push: true
-          tags: nfacr.azurecr.io/python-webapp/cd-demo:${{ github.run_number }}
+          tags: nfcicd.azurecr.io/python-webapp/cd-demo:${{ github.run_number }}
   CD:
     needs: CI
     runs-on: ubuntu-latest
@@ -42,14 +42,14 @@ jobs:
         uses: Azure/aks-set-context@v1.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }} 
-          resource-group: rg-handsonaks
-          cluster-name: handsonaks
+          resource-group: container-cicd
+          cluster-name: container-cicd
 
       - name: Update deployment
-        run: sed -i 's|nfacr.azurecr.io/python-webapp/cd-demo:.*|nfacr.azurecr.io/python-webapp/cd-demo:${{ github.run_number }}|gi' 4_container_ci-cd-kubernetes/deployment.yaml
+        run: sed -i 's|nfcicd.azurecr.io/python-webapp/cd-demo:.*|nfcicd.azurecr.io/python-webapp/cd-demo:${{ github.run_number }}|gi' 2_container_ci-cd-kubernetes/deployment.yaml
 
       - name: Update files
-        run: kubectl apply -f 4_container_ci-cd-kubernetes/
+        run: kubectl apply -f 2_container_ci-cd-kubernetes/
         
       - name: Wait for deployment to finish
         run: kubectl rollout status deployment python-deployment-pipeline
