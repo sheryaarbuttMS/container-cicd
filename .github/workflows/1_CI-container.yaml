@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
     paths: 
-    - 2_container_ci/**
-    - .github/workflows/CI-container.yaml
+    - 1_container_ci/**
+    - .github/workflows/1_CI-container.yaml
 
   workflow_dispatch:
   
@@ -23,12 +23,12 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: ACR login
-        run: az acr login -n nfacr
+        run: az acr login -n nfcicd
          
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
-          context: 2_container_ci
+          context: 1_container_ci
           push: true
-          tags: nfacr.azurecr.io/python-webapp/demo:${{ github.run_number }}
+          tags: nfcicd.azurecr.io/python-webapp/demo:${{ github.run_number }}
           
