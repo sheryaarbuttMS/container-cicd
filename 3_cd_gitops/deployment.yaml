@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: python-demo-cd
-        image: nfcicd.azurecr.io/python-webapp/cd-demo:3
+        image: nfcicd.azurecr.io/python-webapp/demo:2
         ports:
         - containerPort: 8001
