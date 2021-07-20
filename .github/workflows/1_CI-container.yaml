@@ -23,12 +23,12 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: ACR login
-        run: az acr login -n nfcicd
+        run: az acr login -n nfacr
          
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
           context: 1_container_ci
           push: true
-          tags: nfcicd.azurecr.io/python-webapp/demo:${{ github.run_number }}
+          tags: nfcicd.azurecr.io/spark-ci:${{ github.run_number }}
           
