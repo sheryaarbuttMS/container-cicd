@@ -42,8 +42,8 @@ jobs:
         uses: Azure/aks-set-context@v1.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }} 
-          resource-group: container-cicd
-          cluster-name: container-cicd
+          resource-group: spark-demo
+          cluster-name: spark-demo
 
       - name: Update deployment
         run: sed -i 's|nfcicd.azurecr.io/python-webapp/cd-demo:.*|nfcicd.azurecr.io/python-webapp/cd-demo:${{ github.run_number }}|gi' 2_container_ci-cd-kubernetes/deployment.yaml
