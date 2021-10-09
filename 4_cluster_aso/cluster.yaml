@@ -1,7 +1,7 @@
 apiVersion: microsoft.resources.azure.com/v1alpha1api20200601
 kind: ResourceGroup
 metadata:
-  name: auto-cluster
+  name: auto-cluster2
   namespace: default
 spec:
   location: westus2
@@ -9,12 +9,12 @@ spec:
 apiVersion: microsoft.containerservice.azure.com/v1alpha1api20210501
 kind: ManagedCluster
 metadata:
-  name: auto-cluster
+  name: auto-cluster2
   namespace: default
 spec:
   location: westus2
   owner:
-    name: auto-cluster
+    name: auto-cluster2
   dnsPrefix: asonf
   agentPoolProfiles:
     - name: pool1
