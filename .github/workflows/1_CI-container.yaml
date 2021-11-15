@@ -30,5 +30,5 @@ jobs:
         with:
           context: 1_container_ci
           push: true
-          tags: nfacr.azurecr.io/spark-ci:${{ github.run_number }}
+          tags: nfacr.azurecr.io/uantwerpen-ci:${{ github.run_number }}
           
