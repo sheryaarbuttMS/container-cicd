@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: python-demo-cd
-        image: nfacr.azurecr.io/uantwerpen-cd:14
+        image: nfacr.azurecr.io/uantwerpen-cd:15
         ports:
         - containerPort: 8001
