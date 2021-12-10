@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello kubeclub. Weird stuff is happening in testing.!"
+    return "Hello kubeclub. Everything is running fine!"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8001, debug=True)
