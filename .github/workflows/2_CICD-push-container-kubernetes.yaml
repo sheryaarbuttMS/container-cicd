@@ -31,6 +31,7 @@ jobs:
           context: 2_container_ci-cd-kubernetes
           push: true
           tags: nfacr.azurecr.io/kubeclub-cd:${{ github.run_number }}
+  
   CD:
     needs: CI
     runs-on: ubuntu-latest
