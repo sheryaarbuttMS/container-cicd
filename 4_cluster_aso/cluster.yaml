@@ -25,7 +25,7 @@ spec:
   identity:
     type: SystemAssigned
 ---
-apiVersion: storage.azure.com/v1alpha1api20210401
+apiVersion: microsoft.storage.azure.com/v1alpha1api20210401
 kind: StorageAccount
 metadata:
   name: nfstaccdemo
