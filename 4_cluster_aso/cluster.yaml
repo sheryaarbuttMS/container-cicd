@@ -24,3 +24,17 @@ spec:
       mode: System
   identity:
     type: SystemAssigned
+---
+apiVersion: storage.azure.com/v1alpha1api20210401
+kind: StorageAccount
+metadata:
+  name: nfstaccdemo
+  namespace: default
+spec:
+  location: westus2
+  kind: BlobStorage
+  sku:
+    name: Standard_LRS
+  owner:
+    name: auto-cluster2
+  accessTier: Hot
