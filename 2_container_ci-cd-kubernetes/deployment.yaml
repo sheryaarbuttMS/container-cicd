@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: python-demo-cd
-        image: nfacr.azurecr.io/spark-cd:1
+        image: actionssheryaarreg.azurecr.io/spark-cd:1
         ports:
         - containerPort: 8001
