@@ -23,14 +23,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: ACR login
-        run: az acr login -n nfacr
+        run: az acr login -n actionssheryaarreg
          
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
           context: 2_container_ci-cd-kubernetes
           push: true
-          tags: nfacr.azurecr.io/kubeclub-cd:${{ github.run_number }}
+          tags: actionssheryaarreg.azurecr.io/kubeclub-cd:${{ github.run_number }}
   
   CD:
     needs: CI
@@ -43,11 +43,11 @@ jobs:
         uses: Azure/aks-set-context@v1.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }} 
-          resource-group: kubeclub
+          resource-group: test-actions
           cluster-name: kubeclub
 
       - name: Update deployment
-        run: sed -i 's|nfacr.azurecr.io/spark-cd:.*|nfacr.azurecr.io/kubeclub-cd:${{ github.run_number }}|gi' 2_container_ci-cd-kubernetes/deployment.yaml
+        run: sed -i 's|actionssheryaarreg.azurecr.io/spark-cd:.*|actionssheryaarreg.azurecr.io/kubeclub-cd:${{ github.run_number }}|gi' 2_container_ci-cd-kubernetes/deployment.yaml
 
       - name: Update files
         run: kubectl apply -f 2_container_ci-cd-kubernetes/
