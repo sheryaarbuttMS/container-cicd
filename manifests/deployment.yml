@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "kubeclub-5406"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "kubeclub-5406"
+  template:
+    metadata:
+      labels:
+        app: "kubeclub-5406"
+    spec:
+      containers:
+        - name: "kubeclub-5406"
+          image: "actionssheryaarreg.azurecr.io/kubeclub"
+          ports:
+          - containerPort: 8001
